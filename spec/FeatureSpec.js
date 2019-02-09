@@ -12,9 +12,15 @@ describe("Feature Test", function(){
             bowlingscore.inputroll(0);
         }
         expect(bowlingscore.currentscore()).toEqual(0)
-        console.log(bowlingscore.currentscore());
         expect(bowlingscore.gamecomplete()).toEqual(true)
     });
+
+    it('doubles your next roll if you get a strike', function(){
+        bowlingscore.inputroll(10)
+        bowlingscore.inputroll(5)
+        bowlingscore.inputroll(5)
+        expect(bowlingscore.currentscore()).toEqual(30)
+    })
 
     //
     // it('returns your current score', function(){

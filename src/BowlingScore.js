@@ -1,11 +1,31 @@
 function BowlingScore(){
-      this.score = 0
-      this.framesleft = 20
+      this.score = 0;
+      this.framesleft = 20;
+      this.multiplier = 0;
 };
 
 BowlingScore.prototype.inputroll = function (score){
-      this.score += score;
-      this.framesleft -= 1;
+      if (this.multiplier !== 0){
+        if (score === 10) {
+            this.framesleft -= 2
+            this.score += (score * 2);
+            this.multiplier += 2;
+            this.multiplier -= 1;
+          } else {
+            this.score += (score * 2);
+            this.framesleft -= 1;
+            this.multiplier -= 1;
+          }
+      } else {
+          if (score === 10) {
+            this.score += score
+            this.framesleft -= 2
+            this.multiplier += 2;
+          } else {
+            this.score += score;
+            this.framesleft -= 1;
+        }
+    }
 };
 
 

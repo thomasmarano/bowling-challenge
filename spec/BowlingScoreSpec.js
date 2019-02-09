@@ -25,4 +25,13 @@ describe("BowlingScore", function(){
         expect(bowlingscore.gamecomplete()).toEqual(true)
     });
 
+    it('skips the next frame when you get a strike', function(){
+        bowlingscore.inputroll(10)
+        expect(bowlingscore.framesleft).toEqual(18)
+    })
+
+    it('turns on a multiplier when you get a strike for next 2 moves', function(){
+        bowlingscore.inputroll(10);
+        expect(bowlingscore.multiplier).toEqual(2);
+    })
 });
