@@ -45,10 +45,19 @@ describe("BowlingScore", function(){
         expect(bowlingscore.firstroll).toEqual(4)
     })
 
-    // it('turns on a multiplier of 1 when you get a spare for next move', function(){
-    //     bowlingscore.inputroll(5);
-    //     bowlingscore.inputroll(5);
-    //     expect(bowlingscore.multiplier).toEqual(1);
-    // })
+    it('turns on a multiplier of 1 when you get a spare for next move', function(){
+        bowlingscore.inputroll(5);
+        bowlingscore.inputroll(5);
+        expect(bowlingscore.multiplier).toEqual(1);
+    })
+
+    it('correctly calculates score & frames left in the case of 3 strikes in a row', function(){
+        bowlingscore.inputroll(10);
+        bowlingscore.inputroll(10);
+        bowlingscore.inputroll(10);
+        bowlingscore.inputroll(10);
+        bowlingscore.inputroll(10);
+        console.log(bowlingscore.score)
+    })
 
 });
