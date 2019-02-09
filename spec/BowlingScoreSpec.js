@@ -51,13 +51,24 @@ describe("BowlingScore", function(){
         expect(bowlingscore.multiplier).toEqual(1);
     })
 
-    it('correctly calculates score & frames left in the case of 3 strikes in a row', function(){
-        bowlingscore.inputroll(10);
-        bowlingscore.inputroll(10);
-        bowlingscore.inputroll(10);
-        bowlingscore.inputroll(10);
-        bowlingscore.inputroll(10);
+    it('correctly calculates a perfect score', function(){
+        bowlingscore.inputroll(10)
+        console.log(bowlingscore.score)
+        bowlingscore.inputroll(10)
+        console.log(bowlingscore.score)
+        bowlingscore.inputroll(4)
+        console.log(bowlingscore.score)
+        bowlingscore.inputroll(4)
+        console.log(bowlingscore.score)
+        // bowlingscore.inputroll(10)
+        // bowlingscore.inputroll(10)
+        // bowlingscore.inputroll(10)
+        // bowlingscore.inputroll(10)
+        // bowlingscore.inputroll(10)
+        // bowlingscore.inputroll(10)
+        // bowlingscore.inputroll(10)
+        // bowlingscore.inputroll(10)
+        // bowlingscore.inputroll(10)
         console.log(bowlingscore.score)
     })
-
 });

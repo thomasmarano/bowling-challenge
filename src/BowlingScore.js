@@ -7,6 +7,9 @@ function BowlingScore(){
 };
 
 BowlingScore.prototype.inputroll = function (score){
+  if (this.framesleft === 2) {
+      this.finalFrame(score);
+  } else {
       if (this.multiplier !== 0){
           this.score += (score * 2);
           this.multiplier -= 1;
@@ -14,7 +17,6 @@ BowlingScore.prototype.inputroll = function (score){
               this.strike();
           } else {
             this.individualFrame(score)
-            this.framesleft -= 1;
           }
       } else {
           this.score += score
@@ -22,20 +24,35 @@ BowlingScore.prototype.inputroll = function (score){
             this.strike();
           } else {
             this.individualFrame(score);
-            this.framesleft -= 1;
         }
     }
+  }
 };
+
+BowlingScore.prototype.finalFrame = function(roll){
+
+}
+
+BowlingScore.prototype.strike = function(){
+        this.framesleft -= 2
+        this.multiplier += 2
+}
 
 BowlingScore.prototype.individualFrame = function(score) {
     if (this.firstroll === 100) {
         this.firstroll = score;
+        this.framesleft -= 1;
     } else {
         this.secondroll = score;
         this.spareCalculator();
-        this.firstroll = 100
-        this.secondroll = 100
+        this.framesleft -= 1;
+        this.resetMoves
     }
+  }
+
+  BowlingScore.prototype.resetMoves = function() {
+      this.firstroll = 100
+      this.secondroll = 100
   }
 
   BowlingScore.prototype.spareCalculator = function() {
@@ -44,10 +61,7 @@ BowlingScore.prototype.individualFrame = function(score) {
           }
   }
 
-BowlingScore.prototype.strike = function(){
-        this.framesleft -= 2
-        this.multiplier += 2
-}
+
 
 
 BowlingScore.prototype.currentscore = function(){
