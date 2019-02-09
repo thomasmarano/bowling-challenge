@@ -15,7 +15,7 @@ describe("Feature Test", function(){
         expect(bowlingscore.gamecomplete()).toEqual(true)
     });
 
-    it('doubles your next two roll if you get a strike', function(){
+    it('doubles your next two rolls if you get a strike', function(){
         bowlingscore.inputroll(10)
         bowlingscore.inputroll(5)
         bowlingscore.inputroll(5)

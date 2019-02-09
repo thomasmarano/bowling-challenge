@@ -40,10 +40,15 @@ describe("BowlingScore", function(){
         expect(bowlingscore.multiplier).toEqual(2);
     })
 
-    it('turns on a multiplier of 1 when you get a spare for next move', function(){
-        bowlingscore.inputroll(5);
-        bowlingscore.inputroll(5);
-        expect(bowlingscore.multiplier).toEqual(1);
+    it('adds the first roll of a frame to an instance variable', function(){
+        bowlingscore.inputroll(4)
+        expect(bowlingscore.firstroll).toEqual(4)
     })
+
+    // it('turns on a multiplier of 1 when you get a spare for next move', function(){
+    //     bowlingscore.inputroll(5);
+    //     bowlingscore.inputroll(5);
+    //     expect(bowlingscore.multiplier).toEqual(1);
+    // })
 
 });
