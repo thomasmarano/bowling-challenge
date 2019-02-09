@@ -12,7 +12,6 @@ describe("BowlingScore", function(){
 
     it('adds your roll to the current score', function(){
         bowlingscore.inputroll(3);
-        console.log(bowlingscore.score)
         expect(bowlingscore.score).toEqual(3)
     });
 
@@ -20,7 +19,7 @@ describe("BowlingScore", function(){
         expect(bowlingscore.gamecomplete()).toEqual(false)
     });
 
-    it('tells you that game is complete after 20 rolls', function(){
+    it('tells you that game is complete after 20 frames', function(){
         bowlingscore.framesleft = 0;
         expect(bowlingscore.gamecomplete()).toEqual(true)
     });
@@ -30,8 +29,21 @@ describe("BowlingScore", function(){
         expect(bowlingscore.framesleft).toEqual(18)
     })
 
-    it('turns on a multiplier when you get a strike for next 2 moves', function(){
+    it('turns on a multiplier of 2 when you get a strike for next 2 moves', function(){
         bowlingscore.inputroll(10);
         expect(bowlingscore.multiplier).toEqual(2);
     })
+
+    it('reduces your frames by 2 & adds to your multiple on a strike', function(){
+        bowlingscore.strike();
+        expect(bowlingscore.framesleft).toEqual(18);
+        expect(bowlingscore.multiplier).toEqual(2);
+    })
+
+    it('turns on a multiplier of 1 when you get a spare for next move', function(){
+        bowlingscore.inputroll(5);
+        bowlingscore.inputroll(5);
+        expect(bowlingscore.multiplier).toEqual(1);
+    })
+
 });

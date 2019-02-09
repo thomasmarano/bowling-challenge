@@ -7,9 +7,8 @@ function BowlingScore(){
 BowlingScore.prototype.inputroll = function (score){
       if (this.multiplier !== 0){
         if (score === 10) {
-            this.framesleft -= 2
+            this.strike();
             this.score += (score * 2);
-            this.multiplier += 2;
             this.multiplier -= 1;
           } else {
             this.score += (score * 2);
@@ -18,15 +17,19 @@ BowlingScore.prototype.inputroll = function (score){
           }
       } else {
           if (score === 10) {
+            this.strike();
             this.score += score
-            this.framesleft -= 2
-            this.multiplier += 2;
           } else {
             this.score += score;
             this.framesleft -= 1;
         }
     }
 };
+
+BowlingScore.prototype.strike = function(){
+        this.framesleft -= 2
+        this.multiplier += 2
+}
 
 
 BowlingScore.prototype.currentscore = function(){
@@ -40,12 +43,3 @@ BowlingScore.prototype.gamecomplete = function(){
           return true;
       }
 };
-
-//
-// BowlingScore.prototype.addsecondroll = function (score){
-//       this.score += score;
-// };
-//
-// //the function above repeats itself
-//
-//

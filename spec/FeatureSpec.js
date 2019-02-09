@@ -15,42 +15,18 @@ describe("Feature Test", function(){
         expect(bowlingscore.gamecomplete()).toEqual(true)
     });
 
-    it('doubles your next roll if you get a strike', function(){
+    it('doubles your next two roll if you get a strike', function(){
         bowlingscore.inputroll(10)
         bowlingscore.inputroll(5)
         bowlingscore.inputroll(5)
         expect(bowlingscore.currentscore()).toEqual(30)
+    });
+
+    it('doubles your next roll if you get a spare', function(){
+        bowlingscore.inputroll(5)
+        bowlingscore.inputroll(5)
+        bowlingscore.inputroll(8)
+        expect(bowlingscore.currentscore()).toEqual(26)
     })
 
-    //
-    // it('returns your current score', function(){
-    //   expect(bowlingscore.totalscore()).toEqual(bowlingscore.score)
-    // });
-    //
-    // it('adds your first roll to your total score', function(){
-    //     bowlingscore.addfirstroll(3)
-    //     expect(bowlingscore.totalscore()).toEqual(3);
-    // });
-    //
-    // it('adds your second roll to your total score', function(){
-    //     bowlingscore.addsecondroll(3)
-    //     expect(bowlingscore.totalscore()).toEqual(3);
-    // });
-
 });
-
-// it('has a maximum temperature of 25 degrees', function() {
-//     for (var i = 0; i < 6; i++) {
-//       thermostat.up();
-//     }
-//     expect(thermostat.getCurrentTemperature()).toEqual(25);
-//   });
-
-//
-// 1. Start by writing a (failing) feature test for the simplest version of the scorecard.
-//
-// > If you score 0 on a roll, twenty times (2 rolls for a frame), assert that the scorecard is a) complete, b) the total is 0.
-//
-// 2. Write (failing) unit tests for the units of code you need to write.
-//
-// 3. Write code to pass the unit tests one at time, until the feature passes.
