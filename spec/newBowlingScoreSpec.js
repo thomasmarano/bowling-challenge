@@ -5,6 +5,11 @@ describe("BowlingGame", function(){
           bowlinggame = new BowlingGame();
       })
 
+      it('adds a roll to your move counter', function(){
+          bowlinggame.rollAdder();
+          expect(bowlinggame.moveNumber).toEqual(1)
+      })
+
       it('adds a score to the frame', function(){
           bowlinggame.inputRoll(5);
           expect(bowlinggame.frames).toContain(5)
@@ -54,8 +59,28 @@ describe("BowlingGame", function(){
           bowlinggame.inputRoll(0);
           bowlinggame.inputRoll(3);
           bowlinggame.scoreCalculator();
-          console.log(bowlinggame.scoreDisplayer())
           expect(bowlinggame.scoreDisplayer()).toEqual(81)
+      })
+
+      it('successfully ends the game after 20 throws of 0', function(){
+          for (var i = 1; i <= 20; i++) {
+            bowlinggame.inputRoll(0)
+          }
+          bowlinggame.scoreCalculator();
+          console.log(bowlinggame.moveNumber)
+
+          expect(bowlinggame.gameComplete()).toEqual(true)
+      })
+
+      it('successfully counts your moves', function(){
+        for (var i = 1; i <= 14; i++) {
+          bowlinggame.inputRoll(0)
+        }
+        bowlinggame.inputRoll(10);
+        bowlinggame.inputRoll(10);
+        bowlinggame.inputRoll(10);
+        bowlinggame.scoreCalculator();
+        expect(bowlinggame.gameComplete()).toEqual(true)
       })
 
 });
