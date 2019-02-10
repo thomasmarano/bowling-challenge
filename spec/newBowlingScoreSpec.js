@@ -13,8 +13,7 @@ describe("BowlingGame", function(){
       it('calculates the total score in all your frames', function(){
           bowlinggame.inputRoll(5);
           bowlinggame.inputRoll(3);
-          console.log(bowlinggame.scoreDisplayer())
-          expect(bowlinggame.scoreCalculator()).toEqual(8)
-
+          bowlinggame.scoreCalculator();
+          expect(bowlinggame.scoreDisplayer()).toEqual(8)
       });
 });

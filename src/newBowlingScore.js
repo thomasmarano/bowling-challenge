@@ -8,11 +8,9 @@ BowlingGame.prototype.inputRoll = function(score){
 }
 
 BowlingGame.prototype.scoreCalculator = function(){
-    for (var i = 0; i <= this.frames.length; i++){
+    for (var i = 0; i < this.frames.length; i++){
         this.score += this.frames[i]
     }
-
-    // return this.score = this.frames.reduce(function(a, b) {a + b}, 0)
 }
 
 BowlingGame.prototype.scoreDisplayer = function(){

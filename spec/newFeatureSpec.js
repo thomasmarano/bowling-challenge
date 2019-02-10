@@ -10,8 +10,6 @@ describe("Feature Tests", function(){
             bowlinggame.inputRoll(0)
           }
           bowlinggame.scoreCalculator();
-          console.log(6);
-          console.log(bowlinggame.scoreDisplayer());
           expect(bowlinggame.scoreDisplayer()).toEqual(0)
       })
 })
