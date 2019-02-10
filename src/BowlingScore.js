@@ -7,9 +7,9 @@ function BowlingScore(){
 };
 
 BowlingScore.prototype.inputroll = function (score){
-  if (this.framesleft === 2) {
-      this.finalFrame(score);
-  } else {
+  // if (this.framesleft === 2) {
+  //     this.finalFrame(score);
+  // } else {
       if (this.multiplier !== 0){
           this.score += (score * 2);
           this.multiplier -= 1;
@@ -26,7 +26,7 @@ BowlingScore.prototype.inputroll = function (score){
             this.individualFrame(score);
         }
     }
-  }
+  // }
 };
 
 BowlingScore.prototype.finalFrame = function(roll){

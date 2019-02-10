@@ -11,6 +11,7 @@ describe("Feature Test", function(){
         for(var i = 1; i<=20; i++) {
             bowlingscore.inputroll(0);
         }
+        console.log(bowlingscore.framesleft)
         expect(bowlingscore.currentscore()).toEqual(0)
         expect(bowlingscore.gamecomplete()).toEqual(true)
     });
