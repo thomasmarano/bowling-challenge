@@ -81,7 +81,7 @@ describe("BowlingGame", function(){
             bowlinggame.inputRoll(0)
           }
           bowlinggame.scoreCalculator();
-          console.log(bowlinggame.moveNumber)
+          // console.log(bowlinggame.moveNumber)
           expect(bowlinggame.gameComplete()).toEqual(true)
       })
 
@@ -108,8 +108,11 @@ describe("BowlingGame", function(){
           bowlinggame.inputRoll(0)
         }
           bowlinggame.inputRoll(10);
+          console.log(bowlinggame.frames)
           console.log(bowlinggame.moveNumber)
-        expect(function() {bowlinggame.inputRoll(0)}).toThrow();
+          console.log(bowlinggame.frames[bowlinggame.frames.length - 1])
+          bowlinggame.inputRoll(8);
+
       })
 
 

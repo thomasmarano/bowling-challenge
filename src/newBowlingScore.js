@@ -6,9 +6,7 @@ function BowlingGame(){
 };
 
 BowlingGame.prototype.inputRoll = function(score){
-    if(this.finalMoveStrikeCounter === 2) {
-      throw new Error("10 Frames Completed");
-    } else if(this.moveNumber === 20) {
+    if (this.moveNumber === 20) {
         this.finalMove(score);
     } else {
       this.rollAdder();
@@ -20,16 +18,18 @@ BowlingGame.prototype.inputRoll = function(score){
 }
 
 BowlingGame.prototype.finalMove = function(score){
-     if ((this.frames[frames.length - 1] + this.frames[frames.length - 2]) === 10) {
-        this.frames.push(score)
-        this.finalMoveStrikeCounter += 2
-    } else if((this.frames[frames.length - 1] === 10)){
-        this.frames.push(score)
-        this.finalMoveStrikeCounter += 1;
+    if ((this.frames[frames.length - 1] === 10)) {
+        this.finalMoveStrikeCounter += 1
+        return this.frames.push(score)
+    } else if ((this.frames[frames.length - 1] + this.frames[frames.length - 2]) === 10) {
+        this.finalMoveStrikeCounter += 2;
+        return this.frames.push(score)
     } else {
         throw new Error("10 Frames Completed");
     }
 }
+
+//FIGURE OUT HOW TO FIX FROM HERE
 
 
 BowlingGame.prototype.scoreCalculator = function(){
