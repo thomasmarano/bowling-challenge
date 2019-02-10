@@ -62,13 +62,26 @@ describe("BowlingGame", function(){
           expect(bowlinggame.scoreDisplayer()).toEqual(81)
       })
 
+      it('gives you a the correct score for several spares & strikes', function(){
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(4);
+          bowlinggame.inputRoll(0);
+          bowlinggame.inputRoll(3);
+          bowlinggame.scoreCalculator();
+          expect(bowlinggame.scoreDisplayer()).toEqual(81)
+      })
+
       it('successfully ends the game after 20 throws of 0', function(){
           for (var i = 1; i <= 20; i++) {
             bowlinggame.inputRoll(0)
           }
           bowlinggame.scoreCalculator();
           console.log(bowlinggame.moveNumber)
-
           expect(bowlinggame.gameComplete()).toEqual(true)
       })
 
@@ -82,5 +95,22 @@ describe("BowlingGame", function(){
         bowlinggame.scoreCalculator();
         expect(bowlinggame.gameComplete()).toEqual(true)
       })
+
+      it('raises an error if user puts in more rolls than allowed', function(){
+        for (var i = 1; i <= 20; i++) {
+          bowlinggame.inputRoll(0)
+        }
+        expect(function() {bowlinggame.inputRoll(0)}).toThrow();
+      })
+
+      it('does not raise an error if you roll a strike on your last move', function(){
+        for (var i = 1; i <= 18; i++) {
+          bowlinggame.inputRoll(0)
+        }
+          bowlinggame.inputRoll(10);
+          console.log(bowlinggame.moveNumber)
+        expect(function() {bowlinggame.inputRoll(0)}).toThrow();
+      })
+
 
 });

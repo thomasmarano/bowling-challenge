@@ -2,22 +2,42 @@ function BowlingGame(){
     this.frames = [];
     this.score = 0;
     this.moveNumber = 0;
+    this.finalMoveStrikeCounter = 0;
 };
 
 BowlingGame.prototype.inputRoll = function(score){
-    return this.frames.push(score);
+    if(this.finalMoveStrikeCounter === 2) {
+      throw new Error("10 Frames Completed");
+    } else if(this.moveNumber === 20) {
+        this.finalMove(score);
+    } else {
+      this.rollAdder();
+      if (score === 10) {
+          this.rollAdder();
+      }
+      return this.frames.push(score);
+    }
 }
+
+BowlingGame.prototype.finalMove = function(score){
+     if ((this.frames[frames.length - 1] + this.frames[frames.length - 2]) === 10) {
+        this.frames.push(score)
+        this.finalMoveStrikeCounter += 2
+    } else if((this.frames[frames.length - 1] === 10)){
+        this.frames.push(score)
+        this.finalMoveStrikeCounter += 1;
+    } else {
+        throw new Error("10 Frames Completed");
+    }
+}
+
 
 BowlingGame.prototype.scoreCalculator = function(){
     for (var i = 0; i < this.frames.length; i++){
         this.score += this.frames[i];
-        this.rollAdder();
-        if (this.frames[i] === 10) {
-            this.rollAdder();
-        }
     }
-      this.strikeCalculator();
-      this.spareCalculator();
+    this.strikeCalculator();
+    this.spareCalculator();
 }
 
 BowlingGame.prototype.rollAdder = function(){

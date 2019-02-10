@@ -13,6 +13,6 @@ describe("Feature Tests", function(){
           expect(bowlinggame.scoreDisplayer()).toEqual(0)
       })
 
-      
+
 
 })
