@@ -25,12 +25,6 @@ describe("BowlingGame", function(){
           expect(bowlinggame.scoreDisplayer()).toEqual(26)
       })
 
-      it('gives you a strike bonus if you get 2 strikes in a row', function(){
-          bowlinggame.inputRoll(10);
-          bowlinggame.inputRoll(10);
-          bowlinggame.scoreCalculator()
-          expect(bowlinggame.scoreDisplayer()).toEqual(30)
-      })
       it('gives you a strike bonus if you get 4 strikes in a row', function(){
           bowlinggame.inputRoll(10);
           bowlinggame.inputRoll(10);
@@ -38,6 +32,30 @@ describe("BowlingGame", function(){
           bowlinggame.inputRoll(10);
           bowlinggame.scoreCalculator();
           expect(bowlinggame.scoreDisplayer()).toEqual(90)
+      })
+
+      it('gives you a spare bonus', function(){
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(4);
+          bowlinggame.inputRoll(4);
+          bowlinggame.scoreCalculator();
+          expect(bowlinggame.scoreDisplayer()).toEqual(22)
+      })
+
+      it('gives you a the correct score for several spares & strikes', function(){
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(4);
+          bowlinggame.inputRoll(0);
+          bowlinggame.inputRoll(3);
+          bowlinggame.scoreCalculator();
+          console.log(bowlinggame.scoreDisplayer())
+          expect(bowlinggame.scoreDisplayer()).toEqual(81)
       })
 
 });
