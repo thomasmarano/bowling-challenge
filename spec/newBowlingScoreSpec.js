@@ -16,4 +16,28 @@ describe("BowlingGame", function(){
           bowlinggame.scoreCalculator();
           expect(bowlinggame.scoreDisplayer()).toEqual(8)
       });
+
+      it('gives you a strike bonus if you get a strike', function(){
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(5);
+          bowlinggame.inputRoll(3);
+          bowlinggame.scoreCalculator();
+          expect(bowlinggame.scoreDisplayer()).toEqual(26)
+      })
+
+      it('gives you a strike bonus if you get 2 strikes in a row', function(){
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(10);
+          bowlinggame.scoreCalculator()
+          expect(bowlinggame.scoreDisplayer()).toEqual(30)
+      })
+      it('gives you a strike bonus if you get 4 strikes in a row', function(){
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(10);
+          bowlinggame.inputRoll(10);
+          bowlinggame.scoreCalculator();
+          expect(bowlinggame.scoreDisplayer()).toEqual(90)
+      })
+
 });

@@ -7,9 +7,12 @@ describe("Feature Tests", function(){
 
       it('correctly calculates a gutter game (20 shots of 0 balls)', function(){
           for(i = 1; i <= 20; i++){
-            bowlinggame.inputRoll(0)
+              bowlinggame.inputRoll(0)
           }
           bowlinggame.scoreCalculator();
           expect(bowlinggame.scoreDisplayer()).toEqual(0)
       })
+
+      
+
 })
